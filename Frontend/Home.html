@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ColoShop Home</title>
+</head>
+
+<body>
+
+<h2>Welcome to ColoShop</h2>
+
+<p id="welcome"></p>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+    var name = localStorage.getItem("username");
+
+    if(name) {
+        document.getElementById("welcome").innerHTML = "Hello, " + name;
+    }
+
+    function logout() {
+        localStorage.clear();
+        window.location.href = "login.html";
+    }
+</script>
+
+</body>
+</html>

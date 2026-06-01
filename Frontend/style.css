@@ -1,0 +1,447 @@
+/* =========================
+   GLOBAL
+========================= */
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff;
+    overflow-x:hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+a{
+    text-decoration:none;
+}
+
+/* =========================
+   TOP STRIP
+========================= */
+.top-strip{
+    background:#1f2235;
+    color:#fff;
+    padding:8px 0;
+}
+
+.small-text{
+    font-size:13px;
+    letter-spacing:0.5px;
+}
+
+/* dropdown top text */
+.custom-dd{
+    background:transparent;
+    border:none;
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* =========================
+   DROPDOWN FIX
+========================= */
+.dropdown-menu{
+    background:#fff !important;
+    border:1px solid #ddd;
+    z-index:9999;
+}
+
+.dropdown-item{
+    color:#000 !important;
+    font-weight:500;
+}
+
+.dropdown-item:hover{
+    background:#f5f5f5 !important;
+    color:#ff4d4d !important;
+}
+
+.show-menu{
+    min-width:180px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar{
+    padding:18px 0;
+}
+
+.brand-logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#111 !important;
+}
+
+.brand-logo span{
+    color:#ff4d4d;
+}
+
+.nav-link{
+    color:#333 !important;
+    font-weight:600;
+}
+
+.nav-link:hover{
+    color:#ff4d4d !important;
+}
+
+/* CART ICON */
+.icon-box{
+    font-size:20px;
+    color:#222;
+    transition:0.3s;
+}
+
+.icon-box:hover{
+    color:#ff4d4d;
+}
+
+.cart-badge{
+    position:relative;
+}
+
+.badge-count{
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    background:#ff4d4d;
+    color:#fff;
+    font-size:10px;
+    padding:3px 6px;
+    border-radius:50%;
+}
+
+/* =========================
+   HERO SECTION (UPDATED BUTTON)
+========================= */
+.hero-area{
+    background-image:url('./Images/imageye___-_slider_1.jpg');
+    background-size:cover;
+    background-position:center;
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+.hero-area::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+}
+.hero-area .container{
+    position:relative;
+    z-index:1;
+}
+.insight-zone img{
+    transition: all 0.4s ease;
+    border-radius: 10px;
+}
+
+.insight-zone img:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+/* BUTTON NEW COLORFUL STYLE */
+.shop-btn{
+    background:linear-gradient(45deg,#ff4d4d,#ff8c00,#ff2d55);
+    border:none;
+    padding:12px 30px;
+    font-weight:700;
+    color:#fff;
+    border-radius:30px;
+    transition:0.4s;
+    box-shadow:0 8px 20px rgba(255,77,77,0.3);
+}
+
+.shop-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 25px rgba(255,77,77,0.5);
+}
+
+/* scroll fix */
+#productsSection{
+    scroll-margin-top:100px;
+}
+
+/* =========================
+   NEW ARRIVALS
+========================= */
+.arrival-title{
+    font-size:38px;
+    font-weight:700;
+}
+
+.title-underline{
+    width:70px;
+    height:4px;
+    background:#ff4d4d;
+    margin:12px auto;
+    border-radius:5px;
+}
+
+/* =========================
+   PRODUCTS GRID FIX (4 PER ROW)
+========================= */
+.product-area{
+    background:#fff;
+}
+
+#productContainer{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+#productContainer .col-lg-3{
+    flex:0 0 25%;
+    max-width:25%;
+}
+
+@media(max-width:992px){
+    #productContainer .col-lg-3{
+        flex:0 0 50%;
+        max-width:50%;
+    }
+}
+
+@media(max-width:576px){
+    #productContainer .col-lg-3{
+        flex:0 0 100%;
+        max-width:100%;
+    }
+}
+
+/* PRODUCT CARD */
+.prod-card{
+    width:100%;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:12px;
+    padding:15px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.prod-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.prod-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* ADD BUTTON (COLORFUL) */
+.add-btn{
+    background:linear-gradient(45deg,#111,#444);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:25px;
+    width:100%;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.add-btn:hover{
+    background:linear-gradient(45deg,#ff4d4d,#ff8c00);
+    transform:scale(1.03);
+}
+
+/* =========================
+   BLOG FIX
+========================= */
+.insight-zone{
+    background:#fff;
+    margin-top:80px;
+    position:relative;
+    z-index:1;
+}
+.blog-card{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+    height:100%;
+}
+
+.blog-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.blog-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.blog-card h5{
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.blog-card p{
+    color:#666;
+    font-size:14px;
+}
+
+/* =========================
+   NEWSLETTER
+========================= */
+.mail-zone{
+    background:#f5f5f5;
+}
+
+/* SUBSCRIBE BUTTON COLORFUL */
+.sub-btn{
+    background:linear-gradient(45deg,#ff4d4d,#ff8c00);
+    color:#fff;
+    border:none;
+    padding:10px 25px;
+    font-weight:600;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+.sub-btn:hover{
+    transform:scale(1.05);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.foot-zone{
+    background:#fff;
+    border-top:1px solid #eee;
+}
+
+/* SHOW STATE */
+.toast-msg.show{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.toast-msg{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s ease;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+    .hero-area{
+        text-align:center;
+    }
+}
+.hero-content{
+    color:#fff;
+    max-width:500px;
+}
+
+.hero-sub{
+    font-size:18px;
+    letter-spacing:2px;
+    margin-bottom:10px;
+    font-weight:500;
+    text-transform:uppercase;
+}
+
+.main-heading{
+    font-size:48px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+/* =========================
+   FAQ PAGE
+========================= */
+
+.faq-header{
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:#fff;
+    padding:80px 20px;
+}
+
+.faq-title{
+    font-size:48px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.faq-subtitle{
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+    opacity:0.9;
+}
+
+.faq-section{
+    background:#f8f9fa;
+}
+
+.accordion-item{
+    border:none;
+    border-radius:12px !important;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.accordion-button{
+    font-weight:700;
+    padding:18px;
+    background:#fff;
+    color:#222;
+}
+
+.accordion-button:not(.collapsed){
+    background:linear-gradient(45deg,#ff4d4d,#ff8c00);
+    color:#fff;
+}
+
+.accordion-button:focus{
+    box-shadow:none;
+}
+
+.accordion-body{
+    background:#fff;
+    color:#555;
+    line-height:1.7;
+    font-size:15px;
+}
+
+@media(max-width:768px){
+
+    .faq-title{
+        font-size:34px;
+    }
+
+    .faq-subtitle{
+        font-size:15px;
+    }
+}
+

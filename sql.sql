@@ -1,0 +1,21 @@
+USE coloshop;
+CREATE TABLE products (id INT AUTO_INCREMENT PRIMARY KEY,product_name VARCHAR(200),product_price VARCHAR(100),product_image TEXT);
+USE coloshop;
+SELECT * FROM products;
+SELECT * FROM products;
+USE coloshop;
+DROP TABLE products;
+CREATE TABLE products (id INT AUTO_INCREMENT PRIMARY KEY,product_name VARCHAR(200),product_price VARCHAR(100),product_image TEXT);
+SELECT * FROM products;
+USE coloshop;
+SELECT * FROM admins;
+INSERT INTO admins (username, password) VALUES ('admin', 'admin123');
+USE coloshop;
+SELECT * FROM admins;
+USE coloshop;
+SELECT * FROM products;
+DELETE FROM products WHERE product_name='';
+DELETE FROM products WHERE id=5;
+INSERT INTO products(product_name, product_price, product_image)VALUES('Mens Printed Kurta','35','https://assets2.andaazfashion.com/media/catalog/product/p/r/printed-cotton-dusty-blue-straight-cut-mens-kurta-with-churidar-mkpa07078-1_1.jpg');
+INSERT INTO products (product_name, product_price, product_image)VALUES('Mens Printed Kurta', '35','https://assets2.andaazfashion.com/media/catalog/product/p/r/printed-cotton-dusty-blue-straight-cut-mens-kurta-with-churidar-mkpa07078-1_1.jpg');
+

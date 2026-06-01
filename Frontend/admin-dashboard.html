@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Admin Dashboard - ColoShop</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="admin.css">
+
+    <style>
+
+        body{
+            background:#f4f6f9;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .dashboard-box{
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .title{
+            font-weight:bold;
+            color:#222;
+        }
+
+        .form-control{
+            height:45px;
+            border-radius:8px;
+        }
+
+        .add-btn{
+            width:100%;
+            background:#111827;
+            color:white;
+            border:none;
+            padding:12px;
+            border-radius:8px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        .add-btn:hover{
+            background:#2563eb;
+        }
+
+        .table img{
+            border-radius:8px;
+        }
+
+        #msg{
+            margin-top:15px;
+            font-weight:bold;
+            text-align:center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container mt-5 mb-5">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="title">
+            Admin Dashboard
+        </h2>
+
+        <button onclick="logout()" class="btn btn-danger">
+            Logout
+        </button>
+
+    </div>
+
+    <!-- TOTAL PRODUCTS -->
+    <div class="alert alert-dark">
+
+        Total Products :
+        <strong id="productCount">0</strong>
+
+    </div>
+
+    <!-- ADD PRODUCT CARD -->
+    <div class="dashboard-box mb-4">
+
+        <h4 class="mb-4">
+            Add New Product
+        </h4>
+
+        <form onsubmit="return addProduct()">
+
+            <!-- PRODUCT NAME -->
+            <input
+                type="text"
+                id="pname"
+                class="form-control mb-3"
+                placeholder="Enter Product Name"
+            >
+
+            <!-- PRODUCT PRICE -->
+            <input
+                type="number"
+                id="pprice"
+                class="form-control mb-3"
+                placeholder="Enter Product Price"
+            >
+
+            <!-- PRODUCT IMAGE -->
+            <input
+                type="text"
+                id="pimage"
+                class="form-control mb-3"
+                placeholder="Enter Product Image URL"
+            >
+
+            <!-- BUTTON -->
+            <button class="add-btn">
+                Add Product
+            </button>
+
+        </form>
+
+        <p id="msg"></p>
+
+    </div>
+
+    <!-- PRODUCT LIST -->
+    <div class="dashboard-box">
+
+        <h4 class="mb-4">
+            All Products
+        </h4>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+// CHECK ADMIN LOGIN
+if(!localStorage.getItem("admin")){
+
+    alert("Please Login First");
+
+    window.location.href = "admin-login.html";
+}
+
+
+// LOAD PRODUCTS WHEN PAGE OPENS
+window.onload = function(){
+
+    loadProducts();
+}
+
+
+// ADD PRODUCT
+async function addProduct(){
+
+    let name = document.getElementById("pname").value.trim();
+
+    let price = document.getElementById("pprice").value.trim();
+
+    let image = document.getElementById("pimage").value.trim();
+
+    let msg = document.getElementById("msg");
+
+    // VALIDATION
+    if(name === "" || price === "" || image === ""){
+
+        msg.innerHTML = "Please fill all fields";
+
+        msg.style.color = "red";
+
+        return false;
+    }
+
+    try{
+
+        const response = await fetch("http://localhost:3000/add-product",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+
+                product_name:name,
+
+                product_price:price,
+
+                product_image:image
+
+            })
+
+        });
+
+        const data = await response.json();
+
+        msg.innerHTML = data.message;
+
+        if(data.message === "Product Added Successfully"){
+
+            msg.style.color = "green";
+
+            alert("Product Added Successfully");
+
+            // CLEAR INPUTS
+            document.getElementById("pname").value = "";
+
+            document.getElementById("pprice").value = "";
+
+            document.getElementById("pimage").value = "";
+
+            loadProducts();
+        }
+
+        else{
+
+            msg.style.color = "red";
+        }
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        msg.innerHTML = "Server Error";
+
+        msg.style.color = "red";
+    }
+
+    return false;
+}
+
+
+// LOAD PRODUCTS
+async function loadProducts(){
+
+    try{
+
+        const response = await fetch("http://localhost:3000/products");
+
+        const products = await response.json();
+
+        let table = document.getElementById("productTable");
+
+        table.innerHTML = "";
+
+        document.getElementById("productCount").innerText = products.length;
+
+        products.forEach(product => {
+
+            table.innerHTML += `
+
+            <tr>
+
+                <td>${product.id}</td>
+
+                <td>
+                   <img src="${product.product_image}" width="80" height="80">
+                </td>
+
+                <td>${product.product_name}</td>
+
+                <td>$${product.product_price}</td>
+
+                <td>
+
+                    <button
+                    class="btn btn-danger btn-sm"
+                    onclick="deleteProduct(${product.id})">
+
+                    Delete
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+            `;
+        });
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+        alert("Cannot Load Products");
+    }
+}
+
+
+// DELETE PRODUCT
+async function deleteProduct(id){
+
+    let confirmDelete = confirm("Delete this product?");
+
+    if(confirmDelete){
+
+        try{
+
+            await fetch(`http://localhost:3000/delete-product/${id}`,{
+
+                method:"DELETE"
+            });
+
+            alert("Product Deleted");
+
+            loadProducts();
+
+        }
+
+        catch(error){
+
+            alert("Delete Failed");
+        }
+    }
+}
+
+
+// LOGOUT
+function logout(){
+
+    localStorage.removeItem("admin");
+
+    alert("Admin Logged Out");
+
+    window.location.href = "admin-login.html";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./contact.css">
+</head>
+<body>
+
+<!-- Toast Message -->
+<div id="toastMsg" class="toast-msg">
+    Message Sent Successfully!
+</div>
+
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+
+            <!-- LEFT SIDE -->
+            <div class="col-md-6">
+                <h1>Contact Us</h1>
+                <p>
+                    There are many ways to contact us. You may drop us a line,
+                    give us a call or send an email, choose what suits you the most.
+                </p>
+
+                <p>(800) 686-6688</p>
+                <p>info.deercreative@gmail.com</p>
+                <p>Open hours: 8.00–18.00 Mon–Fri</p>
+                <p>Sunday: Closed</p>
+
+                <h2 class="mt-4">Follow Us</h2>
+
+                <div class="social-icons mt-3">
+                    <i class="bi bi-facebook"></i>
+                    <i class="bi bi-twitter"></i>
+                    <i class="bi bi-google"></i>
+                    <i class="bi bi-instagram"></i>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col-md-6">
+                <h1>Get In Touch With Us!</h1>
+                <p>Fill out the form below to receive a free and confidential.</p>
+
+                <form id="contactForm">
+                    <input type="text" class="form-control mb-3" placeholder="Name" required>
+                    <input type="email" class="form-control mb-3" placeholder="Email" required>
+                    <input type="text" class="form-control mb-3" placeholder="Website">
+                    <textarea class="form-control mb-3" rows="5" placeholder="Message" required></textarea>
+
+                    <button type="submit" class="btn send-btn">SEND MESSAGE</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JS -->
+<script src="./js/contact.js"></script>
+
+</body>
+</html>
